@@ -1,5 +1,7 @@
 const http = require("http");
 
+const PORT = process.env.PORT || 8080;
+
 http.createServer((req, res) => {
   if (req.url === "/health") {
     res.writeHead(200, { "Content-Type": "application/json" });
@@ -7,4 +9,4 @@ http.createServer((req, res) => {
   }
   res.writeHead(404, { "Content-Type": "application/json" });
   res.end(JSON.stringify({ error: "not found" }));
-}).listen(8080, "0.0.0.0", () => console.log("up on 8080"));
+}).listen(PORT, "0.0.0.0", () => console.log(`up on ${PORT}`));
